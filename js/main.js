@@ -13,7 +13,6 @@ var xTarget, yTarget, zTarget;
 var xUp, yUp, zUp;
 var home;
 var vbo, ibo;
-var arrayCube = [];
 var buffersVBO = [];	// buffers para los vertices de cada figura
 var buffersIBO = [];	// buffers para los indices de cada figura
 
