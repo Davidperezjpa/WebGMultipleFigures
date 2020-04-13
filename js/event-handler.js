@@ -11,7 +11,6 @@ function clickButtonOrbitEventListener(event)
 function clickButtonPauseEventListener(event)
 {
 	orbitCamera = false;
-	// document.getElementById("label-msg").innerHTML = "PAUSE Button clicked!";
 }
 function clickButtonHomeEventListener(event)
 {
@@ -20,7 +19,7 @@ function clickButtonHomeEventListener(event)
 	buffersVBO = [];
 	buffersIBO = [];
 
-	// reseting camera transformation
+	//camera transformation
 	document.getElementById("range-panX").value = 0;
 	document.getElementById("range-panY").value = 0;
 	document.getElementById("range-zoom").value = 0;
@@ -28,26 +27,25 @@ function clickButtonHomeEventListener(event)
 	document.getElementById("label-range-panY").innerHTML = 0;
 	document.getElementById("label-range-zoom").innerHTML = 0;
 
-	// reseting cube
-	document.getElementById("text-size-cube").value = 1;
-	document.getElementById("text-cube-posx").value = 0
-	document.getElementById("text-cube-posy").value = 0;
-	document.getElementById("text-cube-posz").value = 0;
+	//cube
+	document.getElementById("size-cube").value = 1;
+	document.getElementById("cube-posx").value = 0;
+	document.getElementById("cube-posy").value = 0;
+	document.getElementById("cube-posz").value = 0;
 
-	// reseting pyramid
-	document.getElementById("text-pyramid-base").value = 1;
-	document.getElementById("text-pyramid-height").value = 1;
-	document.getElementById("text-pyramid-posx").value = 0
-	document.getElementById("text-pyramid-posy").value = 0;
-	document.getElementById("text-pyramid-posz").value = 0;
+	//pyramid
+	document.getElementById("pyramid-base").value = 1;
+	document.getElementById("pyramid-height").value = 1;
+	document.getElementById("pyramid-posx").value = 0
+	document.getElementById("pyramid-posy").value = 0;
+	document.getElementById("pyramid-posz").value = 0;
 
-	// reseting rectangle
-	document.getElementById("text-rectangle-base").value = 2;
-	document.getElementById("text-rectangle-height").value = 1;
-	document.getElementById("text-rectangle-posx").value = 0
-	document.getElementById("text-rectangle-posy").value = 0;
-	document.getElementById("text-rectangle-posz").value = 0;
-
+	//sphere
+	document.getElementById("Sphere-divisions").value = 12;
+	document.getElementById("SphereCenter-posx").value = 0;
+	document.getElementById("SphereCenter-posy").value = 0;
+	document.getElementById("SphereCenter-posz").value = 0;
+	
 }
 
 // Range Events
@@ -100,10 +98,10 @@ function inputRangeZoomEventListener(event)
 
 // Buttons Cube
 function clickButtonCubeEventListener(event) {
-	var size = parseFloat(document.getElementById("text-size-cube").value);
-	var posx = parseFloat(document.getElementById("text-cube-posx").value);
-	var posy = parseFloat(document.getElementById("text-cube-posy").value);
-	var posz = parseFloat(document.getElementById("text-cube-posz").value);
+	var size = parseFloat(document.getElementById("size-cube").value);
+	var posx = parseFloat(document.getElementById("cube-posx").value);
+	var posy = parseFloat(document.getElementById("cube-posy").value);
+	var posz = parseFloat(document.getElementById("cube-posz").value);
 	console.log("size: ", size);
 	console.log("posx: ", posx);
 	console.log("posy: ", posy);
@@ -122,11 +120,11 @@ function clickButtonCubeEventListener(event) {
 
 // Buttons Pyramid
 function clickButtonPyramidEventListener(event) {
-	var base = parseFloat(document.getElementById("text-pyramid-base").value);
-	var height = parseFloat(document.getElementById("text-pyramid-height").value);
-	var posx = parseFloat(document.getElementById("text-pyramid-posx").value);
-	var posy = parseFloat(document.getElementById("text-pyramid-posy").value);
-	var posz = parseFloat(document.getElementById("text-pyramid-posz").value);
+	var base = parseFloat(document.getElementById("pyramid-base").value);
+	var height = parseFloat(document.getElementById("pyramid-height").value);
+	var posx = parseFloat(document.getElementById("pyramid-posx").value);
+	var posy = parseFloat(document.getElementById("pyramid-posy").value);
+	var posz = parseFloat(document.getElementById("pyramid-posz").value);
 	console.log("base: ", base);
 	console.log("height: ", height);
 	console.log("posx: ", posx);
@@ -144,21 +142,16 @@ function clickButtonPyramidEventListener(event) {
 	render();
 }
 
-// Buttons Rectangle
-function clickButtonRectangleEventListener(event) {
-	var base = parseFloat(document.getElementById("text-rectangle-base").value);
-	var height = parseFloat(document.getElementById("text-rectangle-height").value);
-	var posx = parseFloat(document.getElementById("text-rectangle-posx").value);
-	var posy = parseFloat(document.getElementById("text-rectangle-posy").value);
-	var posz = parseFloat(document.getElementById("text-rectangle-posz").value);
-	console.log("base: ", base);
-	console.log("height: ", height);
-	console.log("posx: ", posx);
-	console.log("posy: ", posy);
-	console.log("posz: ", posz);
-	var rectangle = new createRectangle(base, height, posx, posy, posz);
-	var newVertices = rectangle.vertices;
-	var newIndices = rectangle.indices;
+
+function clickButtonSphereEventListener(event) {
+	var divisions = parseFloat(document.getElementById("Sphere-divisions").value);
+	var posx = parseFloat(document.getElementById("SphereCenter-posx").value);
+	var posy = parseFloat(document.getElementById("SphereCenter-posy").value);
+	var posz = parseFloat(document.getElementById("SphereCenter-posz").value);
+
+	var sphere = new createSphere(divisions,posx,posy,posz);
+	var newVertices = sphere.vertices;
+	var newIndices = sphere.indices;
 	buffersVBO.push(newVertices);
 	buffersIBO.push(newIndices);
 	console.log(newVertices);
@@ -187,8 +180,8 @@ function initEventHandler(event)
 	// Buttons Pyramid
 	document.getElementById("button-pyramid").addEventListener("click", clickButtonPyramidEventListener, false);
 
-	// Buttons rectangle
-	document.getElementById("button-rectangle").addEventListener("click", clickButtonRectangleEventListener, false);
+	// Buttons sphere
+	document.getElementById("button-sphere").addEventListener("click", clickButtonSphereEventListener, false);
 
 }
 

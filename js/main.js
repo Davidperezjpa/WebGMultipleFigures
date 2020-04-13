@@ -14,19 +14,10 @@ var xUp, yUp, zUp;
 var home;
 var vbo, ibo;
 var arrayCube = [];
-var buffersVBO = [], buffersIBO = [], figures = [];
+var buffersVBO = [];	// buffers para los vertices de cada figura
+var buffersIBO = [];	// buffers para los indices de cada figura
 
 function init() {
-	var cube1 = new createPyramid(0.5,1,0.,0.,0.);
-	vertices = cube1.vertices;
-	indices = cube1.indices;
-	console.log("vertices");
-	console.log(vertices);
-	console.log("indices");
-	console.log(indices);
-
-
-
 	// Init Parameters 
 	orbitCamera = false;
 	home = false;
@@ -45,21 +36,6 @@ function init() {
 	// Init Buffers
 	// VBO
 	vbo = gl.createBuffer();
-	// var bufferType = gl.ARRAY_BUFFER; // Buffer type to storage float data
-	// gl.bindBuffer(bufferType, vbo); // Bind to a type of buffer
-	// buffersVBO.push(vertices);
-	// var data = new Float32Array(vertices); // Data to be storage in a Buffer (a raw device)
-	// var usage = gl.STATIC_DRAW; // Used for drawing optimization
-	// gl.bufferData(bufferType, data, usage); // Load data into the Buffer
-	
-	// // IBO
-	// var ibo = gl.createBuffer();
-	// var bufferType = gl.ELEMENT_ARRAY_BUFFER; // Buffer type to storage float data
-	// gl.bindBuffer(bufferType, ibo); // Bind to a type of buffer
-	// buffersIBO.push(indices);
-	// var data = new Uint16Array(indices); // Data to be storage in a Buffer (a raw device)
-	// var usage = gl.STATIC_DRAW; // Used for drawing optimization
-	// gl.bufferData(bufferType, data, usage); // Load data into the Buffer
 
 	// Init Shaders Data
 	// Init Uniform variables
@@ -130,7 +106,6 @@ function render() {
 	
 	for (var i=0;i<buffersVBO.length;i++) {
 		// VBO
-		// vbo = gl.createBuffer();
 		var bufferType = gl.ARRAY_BUFFER;			// Buffer type to storage float data
 		gl.bindBuffer(bufferType, vbo);				// Bind to a type of buffer
 		var data = new Float32Array(buffersVBO[i]);		// Data to be storage in a Buffer (a raw device)
@@ -143,7 +118,6 @@ function render() {
 		var data = new Uint16Array(buffersIBO[i]);		// Data to be storage in a Buffer (a raw device)
 		var usage = gl.STATIC_DRAW;					// Used for drawing optimization
 		gl.bufferData(bufferType, data, usage);	
-		var n = buffersIBO[i].length;
 		// Draw scene
 		var primitiveType = gl.TRIANGLES;//gl.LINE_STRIP; //	// Primitive type to be rendered
 		var count = buffersIBO[i].length; // Number of elements (indices) to be rendered
@@ -187,9 +161,7 @@ function render() {
 		var cameraMatrix = glMatrix.mat4.create(); // M-camera = I
 		glMatrix.mat4.lookAt(cameraMatrix, eye, target, up);
 		gl.uniformMatrix4fv(uCameraMatrixLocation, false, cameraMatrix);
-
 	}
-
 	requestAnimationFrame(render); // call next frame
 }
 

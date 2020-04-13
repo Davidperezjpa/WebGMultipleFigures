@@ -16,6 +16,56 @@
 		<h1>Multiple Figures Challenge</h1> 
 		<div class="container">
   			<div style="float: left;">
+				
+				<hr>
+				<b>Cube:</b>
+				<div>
+					
+					Size:<input id="size-cube" value="1" size="5" style="text-align:right;"></input>
+					<br>
+					Position X:<input id="cube-posx" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					Position Y:<input id="cube-posy" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					Position Z:<input id="cube-posz" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					<br>
+					<button id="button-cube">CREATE</button>
+				</div>
+
+				<hr>
+				<b>Sphere:</b>
+				<div>
+					Divisions:<input id="Sphere-divisions" value="12" size="5" style="text-align:right;"></input>
+					<br>
+					Position X:<input id="SphereCenter-posx" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					Position Y:<input id="SphereCenter-posy" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					Position Z:<input id="SphereCenter-posz" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					<br>
+					<button id="button-sphere">CREATE</button>
+				</div>
+
+
+				<hr>
+				<b>Pyramid:</b>
+				<div>
+					Base:<input id="pyramid-base" value="1" size="5" style="text-align:right;"></input>
+					<br>
+					Height:<input id="pyramid-height" value="1" size="5" style="text-align:right;"></input>
+					<br>
+					Position X:<input id="pyramid-posx" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					Position Y:<input id="pyramid-posy" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					Position Z:<input id="pyramid-posz" value="0" size="5" style="text-align:right;"></input>
+					<br>
+					<br>
+					<button id="button-pyramid">CREATE</button>
+				</div>
+
 				<hr>
 				<b>Camera Transformation:</b>
 				<br>
@@ -33,49 +83,6 @@
 					<b>Zoom: </b>
 					<input type="range" id="range-zoom" min="-10" max="10" value="0">
 					<label id="label-range-zoom">0</label>
-				</div>
-				<hr>
-				<b>Cube:</b>
-				<div>
-					Size:<input id="text-size-cube" value="1" size="5" style="text-align:right;"></input>
-					<br>
-					Position X:<input id="text-cube-posx" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					Position Y:<input id="text-cube-posy" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					Position Z:<input id="text-cube-posz" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					<button id="button-cube">CREATE</button>
-				</div>
-				<hr>
-				<b>Pyramid:</b>
-				<div>
-					Base:<input id="text-pyramid-base" value="1" size="5" style="text-align:right;"></input>
-					<br>
-					Height:<input id="text-pyramid-height" value="1" size="5" style="text-align:right;"></input>
-					<br>
-					Position X:<input id="text-pyramid-posx" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					Position Y:<input id="text-pyramid-posy" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					Position Z:<input id="text-pyramid-posz" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					<button id="button-pyramid">CREATE</button>
-				</div>
-				<hr>
-				<b>Rectangle:</b>
-				<div>
-					Base:<input id="text-rectangle-base" value="2" size="5" style="text-align:right;"></input>
-					<br>
-					Height:<input id="text-rectangle-height" value="1" size="5" style="text-align:right;"></input>
-					<br>
-					Position X:<input id="text-rectangle-posx" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					Position Y:<input id="text-rectangle-posy" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					Position Z:<input id="text-rectangle-posz" value="0" size="5" style="text-align:right;"></input>
-					<br>
-					<button id="button-rectangle">CREATE</button>
 				</div>
 				<hr>
 				<b>Camera Controls:</b>
@@ -112,7 +119,7 @@
 		precision mediump float;	// fragment shaders don't have a default precision
 		void main()
 		{
-			gl_FragColor = vec4(1., 1., 1., 1.);
+			gl_FragColor = vec4(.5, .5, 1., 1.);
 		}
 	</script>
 	
